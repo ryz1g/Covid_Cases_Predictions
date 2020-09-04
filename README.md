@@ -12,4 +12,4 @@ Files included:-
 
 4)model_fianl.json - Model specifications in json format for easier loading
 
-5)model_final.hf - Saved weights
+5)model_final.h5 - Saved weights
