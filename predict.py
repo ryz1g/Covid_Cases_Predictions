@@ -33,9 +33,6 @@ with open("case_time_series.csv") as csvfile:
 pred=[]
 for i in range(num):
     pp=np.array(daily_new[-28:])
-    #print(pp.shape)
-    #print(pp)
-    #print(pp[2])
     daily_new.append(int(loaded_model.predict(pp.reshape(1,28))))
 
 f=open("case_time_series.csv")
@@ -45,9 +42,23 @@ print("From:"+st[len(st)-2].split(",")[0])
 print(daily_new[lt-1:])
 print("Cases predicted will be from one day after the above mentioned date\nCredibility of prediction will decrease after every predicted day")
 
+mov_avg=[0,0,0,0,0,0]
+c=0
+for i in range(len(daily_new)):
+    temp_sum=0
+    for j in range(0,7):
+        if i+j>=len(daily_new) :
+            c=1
+            break
+        temp_sum=temp_sum+daily_new[i+j]
+    if c==1 :
+        break
+    mov_avg.append(temp_sum/7)
+
 plt.plot(days[:lt-2],daily_new[:lt-2])
 plt.plot(days[lt-3:],daily_new[lt-3:])
+plt.plot(days,mov_avg)
 plt.xlabel("Days since March 1")
 plt.ylabel("Daily New Cases")
-plt.title("Analysis")
+plt.title("Blue:Training Data, Yellow:Forecast, Green:7 day moving average")
 plt.show()
