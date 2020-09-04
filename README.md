@@ -15,6 +15,7 @@ Files included:-
 5)model_final.h5 - Saved weights
 
 How to use:-
+Download all the files and save in one folder. Make sure you have Keras and Tensorflow(>2.0) installed.
 
 -If you want to see the forecast using the data available till 2nd September 2020, simply use predict.py
 
