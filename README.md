@@ -10,6 +10,12 @@ Files included:-
 
 3)predict.py - Asks for number of days the forecast is needed and prints the forecasts along with drawing graphs.
 
-4)model_fianl.json - Model specifications in json format for easier loading
+4)model_final.json - Model specifications in json format for easier loading
 
 5)model_final.h5 - Saved weights
+
+How to use:-
+
+-If you want to see the forecast using the data available till 2nd September 2020, simply use predict.py
+-If you want to see the forecast using the latest data, download and replace case_time_series.csv from the link. Remove all the lines which show cases of February (Important). Then use predict.py
+-If you want to train using the latest data and then see the forecast, do the upper step and then use model.py to train and then model.py to predict.
