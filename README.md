@@ -17,7 +17,7 @@ Files included:-
 How to use:-
 Download all the files and save in one folder. Make sure you have Keras and Tensorflow(>2.0) installed.
 
--If you want to see the forecast using the data available till 2nd September 2020, simply use predict.py
+-If you want to see the forecast using the data available till 21st October 2020, simply use predict.py
 
 -If you want to see the forecast using the latest data, download and replace case_time_series.csv from the link. Remove all the lines which show cases of February (Important). Then use predict.py
 
