@@ -17,6 +17,7 @@ def plot_graphs(history, string):
     plt.ylabel(string)
     plt.show()
 
+preeev=0
 with open("case_time_series.csv") as csvfile:
     reader=csv.reader(csvfile, delimiter=",")
     next(reader)
@@ -26,7 +27,12 @@ with open("case_time_series.csv") as csvfile:
             active_cases.append(3+int(row[1])-int(row[3]))
         else :
             active_cases.append(active_cases[c-2]+int(row[1])-int(row[3]))
-        daily_new.append(int(row[1]))
+        if preeev==0 :
+            daily_new.append(int(row[1]))
+            preeev=int(row[1])
+        else :
+            daily_new.append(int(row[1])-preeev)
+            preeev=int(row[1])
         days.append(c)
 
 temp_1=[]
@@ -35,9 +41,9 @@ temp_daily=[]
 
 #hyperparameters for training
 window_size=28
-num_epochs=20000
-bat=200
-op=Adam(lr=0.000001)
+num_epochs=3000
+bat=300
+op=Adam(lr=0.00000001)
 lol="mae"
 verb=2
 

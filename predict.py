@@ -24,11 +24,17 @@ num=int(input("Enter Days for forecast:"))
 daily_new=[]
 days=range(1,lt+num-1)
 
+preeev=0
 with open("case_time_series.csv") as csvfile:
     reader=csv.reader(csvfile, delimiter=",")
     next(reader)
     for row in reader:
-        daily_new.append(int(row[1]))
+        if preeev==0 :
+            daily_new.append(int(row[1]))
+            preeev=int(row[1])
+        else :
+            daily_new.append(int(row[1])-preeev)
+            preeev=int(row[1])
 
 pred=[]
 for i in range(num):
